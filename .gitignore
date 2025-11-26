@@ -1,0 +1,29 @@
+### Build ###
+/target/
+/build/
+/dist/
+
+### NetBeans Config Private ###
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/nbactions.xml
+/nb-configuration.xml
+
+### Logs ###
+*.log
+
+### Sistema Operacional ###
+.DS_Store
+Thumbs.db
+
+### IDEs ###
+/.idea/
+/.vscode/
+
+### Arquivos temporários ###
+*.class
+*.iml
+*.tmp
+*.bak
+*~
