@@ -9,7 +9,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f6fdf7;
+    background: #A8E6CF;
     color: #333;
 }
 
@@ -90,7 +90,7 @@ h2 {
 
 /* Botão verde (principal) */
 .btn-primary {
-    background: #2e7d32;
+    background: #2e7d5d;
     color: white;
 }
 .btn-primary:hover {
@@ -116,14 +116,55 @@ h2 {
 .btn-table:hover {
     background: #2e7d32;
 }
+.centralizar {
+    display: block;      /* Faz o botão ocupar uma linha inteira */
+    width: fit-content;  /* Mantém o tamanho natural do botão */
+    margin: 0 auto;      /* Centraliza horizontalmente */
+}
 
+/* imagem centralizada */
+/*
+.menu-img {
+    display: block;
+    margin: 0 auto 20px auto; /* centraliza e dá margem abaixo */ /*
+    max-width: 100%;
+    height: auto;
+} */
+
+/* container que empilha os botões verticalmente */
+.btn-group-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centraliza horizontalmente */
+    gap: 12px;           /* espaço entre botões */
+    margin-bottom: 20px;
+}
+
+/* opcional: ajustar largura dos botões */
+.btn-nova, .btn-listar {
+    min-width: 240px;    /* largura mínima */
+    text-align: center;
+}
+
+/* se quiser que os botões ocupem 100% do container em telas pequenas */
+@media (max-width: 480px) {
+    .btn-nova, .btn-listar {
+        width: 100%;
+        min-width: 0;
+        padding: 12px 16px;
+    }
+
+    .btn-group-vertical {
+        padding: 0 10px;
+    }
+}
 /* ----------------------------------------------------
    TABELAS
 ---------------------------------------------------- */
 table.tabela {
-    width: 100%;
+    width: 70%;
     border-collapse: collapse;
-    margin-top: 15px;
+    margin: 15px auto; /* <-- Centraliza horizontalmente */
 }
 
 table.tabela th {
@@ -201,10 +242,57 @@ a:hover {
     text-align: center;
     margin-top: 20px;
 }
+/*---------------- IMAGEM ------------------ */
+.img-rounded {
+    border-radius: 12px;  /* arredondamento suave */
+    width: 100%;          /* mantém o tamanho responsivo (opcional) */
+    max-width: 600px;     /* evita que fique gigante */
+    display: block;       /* remove espaços estranhos */
+    margin: 0 auto 20px auto; /* centraliza e dá margem abaixo */
+    
+}
+    /*---------LOGO---------*/
+/* Container da logo fixado no topo */
+.logo-container {
+    position: absolute;
+    top: clamp(5px, 4vw, 20px);
+    left: 15px;
+    z-index: 1000;
+    padding: 10px 0;
+}
 
-/* ----------------------------------------------------
-   RESPONSIVIDADE
----------------------------------------------------- */
+/* Logo responsiva */
+.logo {
+    max-width: 120px;   /* tamanho grande */
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Telas menores */
+@media (max-width: 450px) {
+    .logo {
+        max-width: 50px;   /* agora realmente diminui */
+    }
+
+    .logo-container {
+        top: clamp(12px, 6vw, 28px); /* desce suavemente */
+    }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 300px) {
+    .logo {
+        max-width: 50px;   /* menor tamanho */
+    }
+
+    .logo-container {
+        top: clamp(15px, 7vw, 35px); /* desce ainda mais */
+    }
+}
+
+/*----------- Tabela---------*/
 @media (max-width: 600px) {
     .content {
         padding: 15px;
@@ -219,4 +307,5 @@ a:hover {
     header h1 {
         font-size: 18px;
     }
-}
+    }
+

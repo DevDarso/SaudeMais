@@ -7,7 +7,8 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 0;
+            padding-top: 0;
         }
         h1 {
             margin-bottom: 40px;
@@ -41,10 +42,22 @@
     
 <div th:insert="~{fragments/header :: header}"></div>
 
+<div class="logo-container">
+<a th:href="@{/}">
+    <img th:src="@{/img/logo.png}" alt="Logo" class="logo">
+</a>
+
+</div>
+
+
     <h1>Bem-vindo ao Sistema SaudeMais!</h1>
 
- <a th:href="@{/consulta/nova}" class="btn btn-nova">Nova Consulta</a>
-    <a th:href="@{/consulta/listar}" class="btn btn-listar">Listar Consultas</a>
+    <img th:src="@{/img/FotoMenu.png}" alt="Menu" class="img-rounded">
+
+    <div class="btn-group-vertical">
+        <a th:href="@{/consulta/nova}" class="btn btn-nova">Nova Consulta</a>
+        <a th:href="@{/consulta/listar}" class="btn btn-listar">Listar Consultas</a>
+    </div>
 
     <!-- Importar o rodapé   <div th:replace="fragments/footer :: footer"></div>  -->
    
@@ -53,4 +66,3 @@
 
 </body>
 </html>
-

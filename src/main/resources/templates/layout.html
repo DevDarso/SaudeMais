@@ -6,15 +6,26 @@
 
     <body>
 
+        <!-- Logo fixa no canto superior esquerdo -->
+<div class="logo-container">
+<a th:href="@{/}">
+    <img th:src="@{/img/logo.png}" alt="Logo" class="logo">
+</a>
+
+</div>
+
+        <!-- Cabeçalho -->
         <div th:insert="~{fragments/header :: header}"></div>
 
+        <!-- Conteúdo principal -->
         <main>
             <div th:replace="${conteudo}"></div>
         </main>
 
+        <!-- Rodapé -->
         <div th:insert="~{fragments/footer :: footer}"></div>
 
-        
+        <!-- Scripts -->
         <script th:src="@{/js/app.js}"></script>
         <script th:src="@{/js/modal.js}"></script>
         <script th:src="@{/js/observacao.js}"></script>
