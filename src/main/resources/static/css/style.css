@@ -1,0 +1,222 @@
+/* ----------------------------------------------------
+   RESET GLOBAL
+---------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f6fdf7;
+    color: #333;
+}
+
+/* ----------------------------------------------------
+   HEADER (Topo fixo e responsivo)
+---------------------------------------------------- */
+header {
+    background: #2e7d32; /* verde escuro */
+    color: #fff;
+    padding: 18px 0;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+header h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+/* ----------------------------------------------------
+   FOOTER
+---------------------------------------------------- */
+footer {
+    background: #1b5e20;
+    color: white;
+    padding: 14px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: 30px;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.15);
+    font-size: 14px;
+}
+
+/* ----------------------------------------------------
+   ÁREA PRINCIPAL / CONTAINER
+---------------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+/* ----------------------------------------------------
+   TÍTULOS
+---------------------------------------------------- */
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #2e7d32;
+}
+
+/* ----------------------------------------------------
+   BOTÕES
+---------------------------------------------------- */
+
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-table {
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+/* Botão verde (principal) */
+.btn-primary {
+    background: #2e7d32;
+    color: white;
+}
+.btn-primary:hover {
+    background: #256428;
+}
+
+/* Botão secundário (cinza elegante) */
+.btn-secondary {
+    background: #999;
+    color: white;
+}
+.btn-secondary:hover {
+    background: #888;
+}
+
+/* Botão pequeno usado em tabelas */
+.btn-table {
+    background: #388e3c;
+    color: white;
+    font-size: 14px;
+    padding: 6px 12px;
+}
+.btn-table:hover {
+    background: #2e7d32;
+}
+
+/* ----------------------------------------------------
+   TABELAS
+---------------------------------------------------- */
+table.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table.tabela th {
+    background: #e8f5e9;
+    padding: 12px;
+    border-bottom: 2px solid #c8e6c9;
+    text-align: left;
+    color: #1b5e20;
+}
+
+table.tabela td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+table.tabela tr:hover {
+    background: #f1f8f1;
+}
+
+/* ----------------------------------------------------
+   INPUTS E TEXTAREAS
+---------------------------------------------------- */
+.input-full {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+/* ----------------------------------------------------
+   MODAIS
+---------------------------------------------------- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background: white;
+    padding: 25px;
+    width: 450px;
+    max-width: 95%;
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+    animation: modalShow 0.2s ease-out;
+}
+
+@keyframes modalShow {
+    from { transform: scale(0.95); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+/* ----------------------------------------------------
+   LINKS
+---------------------------------------------------- */
+a {
+    color: #2e7d32;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botão de "voltar ao início" */
+.voltar {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* ----------------------------------------------------
+   RESPONSIVIDADE
+---------------------------------------------------- */
+@media (max-width: 600px) {
+    .content {
+        padding: 15px;
+    }
+
+    table.tabela th,
+    table.tabela td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 18px;
+    }
+}

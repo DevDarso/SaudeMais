@@ -24,8 +24,9 @@ public class ConsultaLookupServiceTest {
     @Test
     public void testBuscarPorId_encontrouConsulta() {
         // Simula o retorno do service.listar()
-        Consulta c1 = new Consulta("Cardiologia", "10/02/2025", "Teste 1");
-        Consulta c2 = new Consulta("Dermato", "12/02/2025", "Teste 2");
+        Consulta c1 = new Consulta("Maria Silva", "2025-01-01", "14:00", "Dor no peito","cardiologista");
+        Consulta c2 = new Consulta("João", "12/02/2025", "13:00","Fraqueza","nutricionista");
+
 
         when(mockService.listar()).thenReturn(List.of(c1, c2));
 

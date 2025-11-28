@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Consulta - SaudeMais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px auto;
+            max-width: 600px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #4CAF50;
+            border: none;
+            font-size: 16px;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <!-- Importar o cabeçalho <div th:replace="fragments/header :: header"></div>   -->
+    
+        <div th:insert="~{fragments/header :: header}"></div>
+    
+    <h2>Nova Consulta</h2>
+
+    <form action="/consulta/salvar" method="POST">
+
+    <label>Paciente</label>
+    <input type="text" name="paciente" required>
+    
+    <label>Médico/Especialidade</label>
+    <input type="text" name="especialidade" required>
+
+    <label>Data</label>
+    <input type="date" name="data" required>
+
+    <label>Horário</label>
+    <input type="time" name="horario" required>
+
+    <label>Observação</label>
+    <textarea name="descricao" required></textarea>
+    
+
+    <button type="submit">Salvar</button>
+
+</form>
+
+    <a href="/">⬅ Voltar ao início</a>
+    
+    <!-- Importar o rodapé <div th:replace="fragments/footer :: footer"></div>   -->
+    
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+
+</body>
+</html>
