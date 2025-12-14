@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tratamentos da Consulta</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    
+        <!-- Importar o cabeçalho -->
+    
+        <div th:insert="~{fragments/header :: header}"></div>
+
+        <div class="container">
+
+            <h2>Tratamento/ Medicação</h2>
+
+            <p class="texto-centralizado">
+                <strong>Consulta nº:</strong>
+                <span id="consultaIdTexto"></span>
+            </p>
+            <br>
+
+
+    <!-- ==================== TABELA DE TRATAMENTOS ==================== -->
+    <div id="tabelaTratamentos"></div>
+
+    <br>
+<!--
+    <a href="/consulta/listagem" class="btn-voltar">← Voltar</a> -->
+
+</div>
+        <!-- ==================== FORMULÁRIO PARA ADICIONAR TRATAMENTO ==================== -->
+    <div class="form-bloco">
+
+    <label>Medicamento:</label>
+    <input type="text" id="tMedicamento" class="input-full">
+
+    <label>Dosagem:</label>
+    <input type="text" id="tDosagem" class="input-full">
+
+    <label>Vezes ao Dia:</label>
+    <input type="number" id="tVezes" class="input-full">
+
+    <label>Quantidade de Dias:</label>
+    <input type="number" id="tDias" class="input-full">
+
+    <label>Data de Início:</label>
+    <input type="date" id="tDataInicio" class="input-full">
+
+    <!-- BOTÃO SALVAR OCUPA A LINHA TODA -->
+    <button id="btnSalvarTratamento" class="btn-save col-span-2">
+        Salvar Tratamento
+    </button>
+
+</div>
+        <div class="link-centralizado">
+            <a href="/">⬅ Voltar ao início</a>
+        </div>
+
+
+        <div th:insert="~{fragments/footer :: footer}"></div>
+
+        <script th:src="@{/js/tratamentoLista.js}"></script>
+
+</body>
+</html>

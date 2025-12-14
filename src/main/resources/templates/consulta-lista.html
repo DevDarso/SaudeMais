@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       th:replace="~{layout :: layout(titulo='Consultas Agendadas', conteudo=~{::section})}">
-      
+
 <section>
 
     <h2>Consultas Agendadas</h2>
 
     <div style="margin-bottom: 50px;">
-    <a th:href="@{/consulta/nova}" class="btn btn-primary centralizar">+ Nova Consulta</a>
+        <a th:href="@{/consulta/cadastro}" class="btn btn-primary centralizar">
+            + Nova Consulta
+        </a>
     </div>
-
-  <!--  <a th:href="@{/consulta/nova}" class="btn btn-primary">+ Nova Consulta</a> -->
-
+<!--
     <table class="tabela">
         <thead>
         <tr>
@@ -27,82 +27,120 @@
             <td th:text="${c.especialidade}"></td>
             <td th:text="${c.data}"></td>
 
-            <!-- BOTÃO OBSERVAÇÃO -->
-            
-<td>
-  <button class="btn-table btn-observacao"
-          th:attr="data-id=${c.id}, data-desc=${c.descricao}">
-      Exibir
-  </button>
-</td>
+            <td>
+                <button class="btn-table btn-observacao"
+                        th:attr="data-id=${c.id}, data-desc=${c.descricao}">
+                    Exibir
+                </button>
+            </td>
 
-
-<td>
-  <button class="btn-table btn-tratamento"
-          th:attr="data-id=${c.id}">
-    Exibir
-  </button>
-</td>
+            <td>
+                <button class="btn-table btn-tratamento"
+                        th:attr="data-id=${c.id}">
+                    Exibir
+                </button>
+            </td>
         </tr>
         </tbody>
     </table>
+-->
+<table class="tabela">
+    <thead>
+    <tr>
+        <th>Especialidade</th>
+        <th>Data</th>
+        <th>Observação</th>
+        <th>Tratamento</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
 
-<!-- === MODAIS === -->
-<div id="modal" class="modal">
+    <tbody>
+    <tr th:each="c : ${consultas}" th:id="'linha-' + ${c.id}">
+        <td th:text="${c.especialidade}"></td>
+        <td th:text="${c.data}"></td>
+
+        <td>
+            <button class="btn-table btn-observacao"
+                    th:attr="data-id=${c.id}, data-desc=${c.descricao}">
+                Exibir
+            </button>
+        </td>
+
+        <td>
+            <button class="btn-table btn-tratamento"
+                    th:attr="data-id=${c.id}">
+                Exibir
+            </button>
+        </td>
+
+        <!-- BOTÃO EXCLUIR -->
+        <td>
+            <button class="btn-table btn-excluir"
+                    th:attr="data-id=${c.id}">
+                Excluir
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+    <!-- === MODAL CONSULTA === -->
+    <div id="modal" class="modal">
+        <div class="modal-box">
+            <h3>Detalhes da Consulta</h3>
+
+            <label>Especialidade</label>
+            <input id="mEspecialidade" class="input-full">
+
+            <label>Data</label>
+            <input id="mData" type="date" class="input-full">
+
+            <label>Observação</label>
+            <textarea id="mObs" rows="4" class="input-full"></textarea>
+
+            <button onclick="fecharModal()" class="btn-secondary">Fechar</button>
+        </div>
+    </div>
+
+    <!-- === MODAL OBSERVAÇÃO === -->
+    <div id="modalObservacao" class="modal">
+        <div class="modal-box">
+            <h3>Observação da Consulta</h3>
+
+            <input type="hidden" id="obsConsultaId">
+
+            <textarea id="obsTexto" rows="6" class="input-full"></textarea>
+
+            <button onclick="salvarObservacao()" class="btn-primary">Salvar</button>
+            <button onclick="fecharObservacao()" class="btn-secondary">OK</button>
+        </div>
+    </div>
+    <!-- === MODAL EXCLUIR CONSULTA === -->
+<div id="modalExcluir" class="modal">
     <div class="modal-box">
-        <h3>Detalhes da Consulta</h3>
-        <label>Especialidade</label>
-        <input id="mEspecialidade" type="text" class="input-full">
+        <h3>Excluir Consulta</h3>
 
-        <label>Data</label>
-        <input id="mData" type="date" class="input-full">
+        <p>Tem certeza que deseja excluir esta consulta?</p>
 
-        <label>Observação</label>
-        <textarea id="mObs" rows="4" class="input-full"></textarea>
+        <input type="hidden" id="excluirConsultaId">
 
-        <button onclick="fecharModal()" class="btn-secondary">Fechar</button>
+        <div class="modal-actions">
+            <button onclick="confirmarExclusao()" class="btn-danger">
+                Excluir
+            </button>
+            <button onclick="fecharModalExcluir()" class="btn-secondary">
+                Cancelar
+            </button>
+        </div>
     </div>
 </div>
 
-<div id="modalTratamento" class="modal">
-    <div class="modal-box">
-        <h3 style="margin-bottom: 15px;">Prescrever Tratamento</h3>
-        
-        <input type="hidden" id="tConsultaId">
-
-        <label>Medicamento</label>
-        <input id="tMedicamento" class="input-full">
-
-        <label>Dosagem</label>
-        <input id="tDosagem" class="input-full">
-
-        <label>Vezes ao dia</label>
-        <input id="tVezes" type="number" class="input-full">
-
-        <label>Dias</label>
-        <input id="tDias" type="number" class="input-full">
-
-        <button onclick="salvarTratamento()" class="btn-primary">Salvar</button>
-        <button onclick="listarTratamentos()" class="btn-secondary">Listar</button>
-        <button onclick="fecharTratamento()" class="btn-secondary">Fechar</button>
-    </div>
-</div>
-
-<div id="modalObservacao" class="modal">
-    <div class="modal-box">
-    <h3 style="margin-bottom: 15px;">Observação da Consulta</h3>
-
-    <input type="hidden" id="obsConsultaId">
-
-    <textarea id="obsTexto" rows="6" class="input-full"></textarea>
-
-    <button onclick="salvarObservacao()" class="btn-primary">Salvar</button>
-    <button onclick="fecharObservacao()" class="btn-secondary">OK</button>
-</div>
+    <!-- SCRIPTS -->
     <script th:src="@{/js/modal.js}"></script>
-<script th:src="@{/js/observacao.js}"></script>
-   </section>
-</div>
+    <script th:src="@{/js/observacao.js}"></script>
+    <script th:src="@{/js/tratamento.js}"></script>
+    <script th:src="@{/js/consultaExcluir.js}"></script>
 
+</section>
 
 </html>

@@ -2,8 +2,9 @@
 // CONTROLE DO MODAL DE OBSERVAÇÃO
 // ================================
 
-// Memória temporária das observações (dura enquanto a página está aberta)
-let observacoesMemoria = {};
+// Armazena observações já carregadas (cache)
+window.observacoesMemoria = window.observacoesMemoria || {};
+let observacoesMemoria = window.observacoesMemoria;
 
 /**
  * Abre o modal de observação
