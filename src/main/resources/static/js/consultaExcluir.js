@@ -1,6 +1,17 @@
 // ======================================================
 //  EXCLUSÃO DE CONSULTA (MODAL)
 // ======================================================
+// ======================================================
+//  ABRIR MODAL DE EXCLUSÃO
+// ======================================================
+document.addEventListener("click", function (e) {
+
+    const btnExcluir = e.target.closest(".btn-excluir");
+    if (!btnExcluir) return;
+
+    const id = btnExcluir.getAttribute("data-id");
+    abrirModalExcluir(id);
+});
 
 function abrirModalExcluir(id) {
     document.getElementById("excluirConsultaId").value = id;
